@@ -43,6 +43,7 @@ function Shop() {
         if(orderIndex < 0) {
             const newGood = {...goodObj, quantity: 1};
             setOrders([...orders, newGood]);
+            setAlert(goodObj.name);
         } else {
             const newOrders = orders.map((item) => {
                 if (item.id === goodObj.id) {
@@ -53,8 +54,6 @@ function Shop() {
             });
             setOrders(newOrders);
         }
-
-        setAlert(goodObj.name);
     }
 
     const deleteFromCart = (id) => {
