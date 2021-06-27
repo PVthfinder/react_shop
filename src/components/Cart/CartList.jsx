@@ -1,15 +1,14 @@
-import React from 'react';
+import React, {useContext} from 'react';
+
+import {ShopContext} from '../../context.js';
 
 import CartItem from '../Cart/CartItem';
 
-function CartList(props) {
+function CartList() {
     const {
         orders = [], 
         showCartHandler=Function.prototype,
-        deleteFromCart=Function.prototype,
-        addToCart=Function.prototype,
-        deleteOrder=Function.prototype
-    } = props;
+    } = useContext(ShopContext);
 
     const totalPrice = orders.reduce((sum, item) => {
         return sum + item.price * item.quantity
@@ -25,10 +24,7 @@ function CartList(props) {
                 orders.map(item => 
                     <CartItem 
                         key={item.id} 
-                        good={item} 
-                        deleteFromCart={deleteFromCart}
-                        addToCart={addToCart}
-                        deleteOrder={deleteOrder}
+                        good={item}
                     />) :
                 <li className="collection-item">Cart is empty</li>
             }

@@ -1,19 +1,22 @@
-import React from 'react';
+import React, {useContext} from 'react';
+
+import {ShopContext} from '../../context';
 
 function CartItem(props) {
     const {id, name, price, quantity} = props.good;
+
     const {
         deleteFromCart=Function.prototype, 
-        deleteOrder=Function.prototype,
+        deleteOneGood=Function.prototype,
         addToCart=Function.prototype
-    } =props;
+    } = useContext(ShopContext);
 
     return (
         <li className="collection-item">
             {name}: 
             <i 
                 className="material-icons quantity-btn tiny" 
-                onClick={() => deleteOrder(props.good)}
+                onClick={() => deleteOneGood(props.good)}
             >
                 remove_circle_outline
             </i>

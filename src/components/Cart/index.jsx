@@ -1,9 +1,13 @@
-import React from 'react';
+import React, {useContext} from 'react';
+
+import {ShopContext} from '../../context';
 
 import './Cart.css'
 
-function Cart(props) {
-    const {quantity = 0, showCartHandler=Function.prototype} = props;
+function Cart() {
+    const {orders = [], showCartHandler=Function.prototype} = useContext(ShopContext);
+
+    const quantity = orders.length;
 
     return (
         <div className="cart blue white-text" onClick={showCartHandler}>
